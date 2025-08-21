@@ -69,7 +69,7 @@ function testEdgeCases() {
 
   // Test invalid difficulty
   try {
-    const puzzle = generatePuzzle('invalid');
+    generatePuzzle('invalid');
     console.log('❌ Should have failed with invalid difficulty');
   } catch (error) {
     console.log('✅ Correctly handled invalid difficulty:', error.message);

@@ -169,9 +169,7 @@ describe('GridGame Integration Tests - Final Working Tests', () => {
     });
 
     it('should handle multiple game cycles', () => {
-      let gameCount = 0;
       GameLogic.generatePuzzle.mockImplementation(() => {
-        gameCount++;
         return { ...mockPuzzle };
       });
 
