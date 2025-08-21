@@ -2,6 +2,7 @@
  * Individual Grid cell Component
  */
 
+
 const GridCell = ({
   value,
   row,
@@ -12,23 +13,22 @@ const GridCell = ({
   onClick,
   disabled = false,
 }) => {
-  const getCellClass = () => {
-    let baseClass =
-      'w-12 h-12 border border-gray-300 flex items-center justify-center text-lg font-semibold transition-colors';
-
+  const getCustomCellClass = () => {
+    let classes = 'w-14 h-14 flex items-center justify-center font-bold text-xl transition-all duration-300 cursor-pointer rounded-xl border-2 shadow-sm hover:shadow-md transform hover:scale-105';
+    
     if (disabled) {
-      baseClass += ' cursor-not-allowed bg-gray-100';
+      classes += ' cursor-not-allowed bg-slate-200 text-slate-500 border-slate-300';
     } else if (isRemoved) {
-      baseClass += ' bg-gray-100 cursor-not-allowed';
+      classes += ' bg-slate-100 text-slate-400 cursor-not-allowed border-slate-200 opacity-50 scale-95';
     } else if (showError) {
-      baseClass += ' bg-red-500 text-white cursor-pointer animate-bounce';
+      classes += ' bg-gradient-to-br from-red-500 to-red-600 text-white animate-shake border-red-700 shadow-lg';
     } else if (gameMode === 'remove') {
-      baseClass += ' bg-white hover:bg-blue-50 cursor-pointer';
+      classes += ' bg-gradient-to-br from-white to-slate-50 hover:from-blue-50 hover:to-blue-100 text-slate-900 border-slate-300 hover:border-blue-400 hover:shadow-lg';
     } else {
-      baseClass += ' bg-white cursor-pointer';
+      classes += ' bg-gradient-to-br from-white to-slate-50 hover:from-purple-50 hover:to-purple-100 text-slate-900 border-slate-300 hover:border-purple-400 hover:shadow-lg';
     }
 
-    return baseClass;
+    return classes;
   };
 
   const handleClick = () => {
@@ -39,41 +39,13 @@ const GridCell = ({
 
   return (
     <div
-      className={getCellClass()}
+      className={getCustomCellClass()}
       onClick={handleClick}
       data-testid={`cell-${row}-${col}`}
-      style={
-        showError
-          ? {
-              animation: 'shake 0.5s ease-in-out',
-            }
-          : {}
-      }
     >
-      {isRemoved ? '' : value}
-
-      {/* CSS for shake animation */}
-      <style>{`
-        @keyframes shake {
-          0%,
-          100% {
-            transform: translateX(0);
-          }
-          10%,
-          30%,
-          50%,
-          70%,
-          90% {
-            transform: translateX(-4px);
-          }
-          20%,
-          40%,
-          60%,
-          80% {
-            transform: translateX(4px);
-          }
-        }
-      `}</style>
+      <span className={isRemoved ? 'opacity-0' : 'opacity-100 transition-opacity duration-200'}>
+        {value}
+      </span>
     </div>
   );
 };

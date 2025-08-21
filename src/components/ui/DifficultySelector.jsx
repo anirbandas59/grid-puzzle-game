@@ -2,34 +2,47 @@
  * Difficulty selector
  */
 
+
 const DifficultySelector = ({
   currentDifficulty,
   onDifficultyChange,
   disabled = false,
 }) => {
   const difficultyOptions = [
-    { key: 'easy', label: '4x4 Grid', size: 4 },
-    { key: 'medium', label: '5x5 Grid', size: 5 },
-    { key: 'hard', label: '6x6 Grid', size: 6 },
+    { key: 'easy', label: '4×4 Grid', size: 4, color: 'emerald', icon: '🟢', desc: 'Perfect for beginners' },
+    { key: 'medium', label: '5×5 Grid', size: 5, color: 'amber', icon: '🟡', desc: 'Moderate challenge' },
+    { key: 'hard', label: '6×6 Grid', size: 6, color: 'red', icon: '🔴', desc: 'Expert level' },
   ];
 
   return (
-    <div className="flex justify-center gap-4 mb-6">
-      {difficultyOptions.map(({ key, label }) => (
+    <div className="flex flex-col sm:flex-row justify-center gap-4">
+      {difficultyOptions.map(({ key, label, icon, desc }) => (
         <button
           key={key}
           onClick={() => onDifficultyChange(key)}
           disabled={disabled}
-          className={`px-4 py-2 rounded-md font-medium transition-colors ${
+          className={`group relative p-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 min-w-[160px] ${
             currentDifficulty === key
-              ? 'bg-blue-600 text-white'
+              ? (key === 'easy' ? 'bg-emerald-600 text-white shadow-xl border-2 border-emerald-700' :
+                 key === 'medium' ? 'bg-amber-600 text-white shadow-xl border-2 border-amber-700' :
+                 'bg-red-600 text-white shadow-xl border-2 border-red-700')
               : disabled
-              ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              ? 'bg-slate-200 text-slate-400 cursor-not-allowed'
+              : (key === 'easy' ? 'bg-white text-slate-700 hover:bg-emerald-50 border-2 border-slate-200 hover:border-emerald-300 shadow-md hover:shadow-lg' :
+                 key === 'medium' ? 'bg-white text-slate-700 hover:bg-amber-50 border-2 border-slate-200 hover:border-amber-300 shadow-md hover:shadow-lg' :
+                 'bg-white text-slate-700 hover:bg-red-50 border-2 border-slate-200 hover:border-red-300 shadow-md hover:shadow-lg')
           }`}
           data-testid={`difficulty-${key}`}
         >
-          {label}
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-2xl">{icon}</span>
+            <span className="text-lg font-bold">{label}</span>
+            <span className={`text-sm opacity-75 ${
+              currentDifficulty === key ? 'text-white' : 'text-slate-500'
+            }`}>
+              {desc}
+            </span>
+          </div>
         </button>
       ))}
     </div>

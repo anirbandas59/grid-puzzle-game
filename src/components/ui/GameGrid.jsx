@@ -15,13 +15,11 @@ const GameGrid = ({
   disabled = false,
 }) => {
   if (!grid || grid.length === 0) {
-    return <div className="text-center text-gray-500">No grid available</div>;
+    return <div className="text-center text-slate-600">No grid available</div>;
   }
 
-  //   const size = grid.length;
-
   return (
-    <div className="inline-block bg-gray-200 p-4 rounded-lg">
+    <div className="inline-block bg-white p-6 rounded-2xl shadow-2xl border-2 border-slate-200 backdrop-blur-sm">
       {/* Column targets header */}
       <div className="flex mb-2">
         <div className="w-12"></div> {/* Empty corner space */}
