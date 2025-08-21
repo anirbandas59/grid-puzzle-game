@@ -15,13 +15,13 @@ const DifficultySelector = ({
   ];
 
   return (
-    <div className="flex flex-col sm:flex-row justify-center gap-4">
+    <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
       {difficultyOptions.map(({ key, label, icon, desc }) => (
         <button
           key={key}
           onClick={() => onDifficultyChange(key)}
           disabled={disabled}
-          className={`group relative p-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 min-w-[160px] ${
+          className={`group relative p-4 sm:p-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 min-w-[140px] sm:min-w-[160px] touch-manipulation ${
             currentDifficulty === key
               ? (key === 'easy' ? 'bg-emerald-600 text-white shadow-xl border-2 border-emerald-700' :
                  key === 'medium' ? 'bg-amber-600 text-white shadow-xl border-2 border-amber-700' :
@@ -34,10 +34,10 @@ const DifficultySelector = ({
           }`}
           data-testid={`difficulty-${key}`}
         >
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-2xl">{icon}</span>
-            <span className="text-lg font-bold">{label}</span>
-            <span className={`text-sm opacity-75 ${
+          <div className="flex flex-col items-center gap-1 sm:gap-2">
+            <span className="text-xl sm:text-2xl">{icon}</span>
+            <span className="text-base sm:text-lg font-bold">{label}</span>
+            <span className={`text-xs sm:text-sm opacity-75 ${
               currentDifficulty === key ? 'text-white' : 'text-slate-500'
             }`}>
               {desc}

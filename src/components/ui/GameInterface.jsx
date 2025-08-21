@@ -35,17 +35,17 @@ const GameInterface = ({
   } = gameState;
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      {/* Help Button - Fixed position */}
+    <div className="max-w-4xl mx-auto p-3 sm:p-6">
+      {/* Help Button - Responsive positioning */}
       <button
         onClick={() => setShowInstructions(true)}
-        className="fixed top-6 right-6 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 z-40"
+        className="fixed top-4 right-4 sm:top-6 sm:right-6 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 z-40 text-sm sm:text-base"
         aria-label="Show instructions"
       >
         💡
       </button>
 
-      <div className="text-center mb-8">
+      <div className="text-center mb-4 sm:mb-8">
         {/* Game Status Based Content */}
         {status === 'setup' && (
           <GameSetup
@@ -78,7 +78,7 @@ const GameInterface = ({
 
       {/* Game Grid */}
       {status === 'playing' && (
-        <div className="flex justify-center">
+        <div className="flex justify-center overflow-x-auto px-2">
           <GameGrid
             grid={grid}
             targets={targets}

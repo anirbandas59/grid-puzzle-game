@@ -264,3 +264,41 @@
 .btn-press:active {
   transform: scale(0.95);
 }
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  /* Reduce hover animations on mobile for better performance */
+  .hover-lift:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1), 0 3px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  .grid-cell-transition:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Faster animations on mobile */
+  .animate-fade-in {
+    animation-duration: 0.3s;
+  }
+  
+  .animate-scale-in {
+    animation-duration: 0.3s;
+  }
+  
+  /* Reduced motion for mobile users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Touch-friendly button sizing */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}

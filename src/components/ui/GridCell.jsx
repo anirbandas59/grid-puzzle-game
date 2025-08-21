@@ -14,7 +14,7 @@ const GridCell = ({
   disabled = false,
 }) => {
   const getCustomCellClass = () => {
-    let classes = 'w-14 h-14 flex items-center justify-center font-bold text-xl transition-all duration-300 cursor-pointer rounded-xl border-2 shadow-sm hover:shadow-md transform hover:scale-105';
+    let classes = 'w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center font-bold text-lg sm:text-xl transition-all duration-300 cursor-pointer rounded-xl border-2 shadow-sm hover:shadow-md transform hover:scale-105 touch-manipulation';
     
     if (disabled) {
       classes += ' cursor-not-allowed bg-slate-200 text-slate-500 border-slate-300';

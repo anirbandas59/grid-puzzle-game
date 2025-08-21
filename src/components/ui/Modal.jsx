@@ -27,7 +27,7 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4"
       onClick={onClose}
     >
       {/* Backdrop */}
@@ -35,19 +35,19 @@ const Modal = ({ isOpen, onClose, children, title }) => {
       
       {/* Modal Content */}
       <div
-        className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in"
+        className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-slate-200">
-          <h2 className="text-2xl font-bold text-slate-900">{title}</h2>
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-slate-200">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{title}</h2>
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-slate-100 transition-colors duration-200"
+            className="p-2 rounded-full hover:bg-slate-100 transition-colors duration-200 touch-manipulation"
             aria-label="Close modal"
           >
             <svg
-              className="w-6 h-6 text-slate-600"
+              className="w-5 h-5 sm:w-6 sm:h-6 text-slate-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -63,7 +63,7 @@ const Modal = ({ isOpen, onClose, children, title }) => {
         </div>
         
         {/* Content */}
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {children}
         </div>
       </div>
