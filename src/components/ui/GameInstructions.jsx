@@ -1,7 +1,6 @@
 /**
- * Game Instructions Component
+ * Game Instructions Component - Now used inside modal
  */
-
 
 const GameInstructions = () => {
   const instructions = [
@@ -32,10 +31,11 @@ const GameInstructions = () => {
   ];
 
   return (
-    <div className="mt-10 bg-gradient-to-br from-slate-50 to-white p-8 rounded-2xl shadow-xl border-2 border-slate-200 max-w-4xl mx-auto">
-      <h3 className="text-3xl font-bold text-slate-900 mb-8 text-center flex items-center justify-center gap-3">
-        🎮 How to Play
-      </h3>
+    <div>
+      <div className="mb-8 text-center">
+        <div className="text-6xl mb-4">🎮</div>
+        <p className="text-xl text-slate-600 font-medium">Master the Grid Number Puzzle with these simple steps!</p>
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         {instructions.map((instruction, index) => (

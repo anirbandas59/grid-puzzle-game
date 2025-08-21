@@ -22,7 +22,7 @@ const GameGrid = ({
     <div className="inline-block bg-white p-6 rounded-2xl shadow-2xl border-2 border-slate-200 backdrop-blur-sm">
       {/* Column targets header */}
       <div className="flex mb-2">
-        <div className="w-12"></div> {/* Empty corner space */}
+        <div className="w-14 h-14 mr-3"></div> {/* Empty corner space */}
         {targets.cols.map((target, index) => (
           <TargetDisplay
             key={`col-target-${index}`}
